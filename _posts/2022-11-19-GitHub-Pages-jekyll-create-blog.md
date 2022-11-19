@@ -85,7 +85,7 @@ gem install jekyll
 如果不想要默认主题，那么就在[官方指南：选择主题](https://jekyllrb.com/docs/themes/#pick-up-a-theme)中给的几个网站中选择自己喜欢的主题，把代码全部下载并复制到项目文件夹（xxx.github.io）中，再按照各自主题的指南操作就行了。
 
 > 以下命令均在本地仓库文件夹环境 `(base) ➜ hukeyi.github.io git:(master) ✗ ` 下执行。
-> {: .prompt-info }
+{: .prompt-info }
 
 > An test showing the `danger` type prompt.
 > {: .prompt-danger }
