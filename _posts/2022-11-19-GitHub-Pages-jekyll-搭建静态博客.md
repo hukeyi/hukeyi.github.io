@@ -87,6 +87,9 @@ gem install jekyll
 > 以下命令均在本地仓库文件夹环境 `(base) ➜ hukeyi.github.io git:(master) ✗ ` 下执行。
 > {: .prompt-info }
 
+> An test showing the `danger` type prompt.
+> {: .prompt-danger }
+
 ## 2.1 下载 jekyll bundler
 
 ```zsh
