@@ -11,11 +11,11 @@ toc: true
 
 如果还未在 github 建立 `xxx.github.io` 仓库，则先根据 [GitHub: Creating a GitHub Pages site](https://docs.github.com/cn/pages/getting-started-with-github-pages/creating-a-github-pages-site)，把仓库建好后，再按下面执行。
 
-# 1. 环境准备
+# 环境准备
 
 我的环境：MacOS, zsh, homebrew
 
-## 1.1 检查环境
+## 检查环境
 
 参考[Jekyll 官方指南：环境准备](https://jekyllrb.com/docs/installation/)。shell 中依次输入以下 5 条命令，检查所需依赖是否已安装：
 
@@ -27,7 +27,7 @@ toc: true
 
 - Make: `make -v`
 
-## 1.2 下载 Ruby
+## 下载 Ruby
 
 [官方指南（MacOS）](https://jekyllrb.com/docs/installation/macos/)建议重新下载单独的较新版本的 Ruby，而非直接使用 macOS 原生的 Ruby。
 
@@ -70,7 +70,7 @@ Error: No such file or directory @ rb_sysopen - /Users/uei/Library/Caches/Homebr
 ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]
 ```
 
-## 1.3 下载 jekyll
+## 下载 jekyll
 
 ```zsh
 gem install jekyll
@@ -78,7 +78,7 @@ gem install jekyll
 
 检查安装结果：`jekyll -v`
 
-# 2. 开始搭建网站
+# 搭建网站
 
 本节将会介绍如何按照这篇[参考文章](https://simondosda.github.io/posts/2021-09-14-blog-github-pages-2-setup.html)搭建默认主题 minima 的博客。
 
@@ -87,13 +87,13 @@ gem install jekyll
 > 以下命令均在本地仓库文件夹环境 `(base) ➜ hukeyi.github.io git:(master) ✗ ` 下执行。
 {: .prompt-info }
 
-## 2.1 下载 jekyll bundler
+## 下载 jekyll bundler
 
 ```zsh
 gem install jekyll bundler
 ```
 
-## 2.2 创建新的 jekyll 项目
+## 创建新的 jekyll 项目
 
 ```zsh
 jekyll new .
@@ -106,7 +106,7 @@ jekyll new .
 
 <img src="/assets/img/22-11/blog00.png" style="zoom:50%;" />
 
-## 2.3 修改文件 Gemfile
+## 修改文件 Gemfile
 
 打开 Gemfile，长这样：
 
@@ -145,13 +145,13 @@ gem "github-pages", "~> 227", group: :jekyll_plugins
 
 <img src="/assets/img/22-11/blog02.png" style="zoom:50%;" />
 
-## 2.4 更新依赖
+## 更新依赖
 
 ```zsh
 bundle update
 ```
 
-## 2.5 本地运行测试
+## 本地运行测试
 
 ```zsh
 bundle exec jekyll serve
@@ -204,13 +204,15 @@ LiveReload address: http://127.0.0.1:35729
 
 <img src="/assets/img/22-11/blog03.png" style="zoom:50%;" />
 
-## 2.6 把以上更改全部 push 到 github 远程仓库
+## 把以上更改全部 push 到 github 远程仓库
 
 浏览器输入 `hukeyi.github.io`
 
 <img src="/assets/img/22-11/blog04.png" style="zoom:40%;" />
 
-# 3. 选择主题
+成功！
+
+# 更换主题
 
 [官方指南：选择主题](https://jekyllrb.com/docs/themes/#pick-up-a-theme)中提供了几个主题网站供选择。本博客使用 [chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)。
 
