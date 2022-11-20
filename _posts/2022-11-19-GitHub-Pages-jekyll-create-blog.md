@@ -1,5 +1,5 @@
 ---
-title: GitHub Pages with jekyll 搭建静态博客
+title: GitHub Pages + jekyll + chirpy 搭建博客
 author: hukeyi
 date: 2022-11-19 17:06:00 +0800
 categories: [Blogging]
@@ -85,6 +85,7 @@ gem install jekyll
 如果不想要默认主题，那么就在[官方指南：选择主题](https://jekyllrb.com/docs/themes/#pick-up-a-theme)中给的几个网站中选择自己喜欢的主题，把代码全部下载并复制到项目文件夹（xxx.github.io）中，再按照各自主题的指南操作就行了。
 
 > 以下命令均在本地仓库文件夹环境 `(base) ➜ hukeyi.github.io git:(master) ✗ ` 下执行。
+
 {: .prompt-info }
 
 ## 2.1 下载 jekyll bundler
@@ -100,6 +101,7 @@ jekyll new .
 ```
 
 > 项目文件夹（`hukeyi.github.io`）必须清空，否则会报错：“Conflict: /Users/uei/hky/code/my-blog/hukeyi.github.io exists and is not empty.”报这个错的话把 `hukeyi.github.io` 文件夹内的所有文件删掉后再执行 `jekyll new .` 就好。
+
 {: .prompt-danger }
 
 安装后，项目文件夹长这样：
@@ -161,7 +163,7 @@ bundle exec jekyll serve
 
 ### Bug: `bundler: failed to load command: jekyll`
 
-```zsh
+```console
 (base) ➜  hukeyi.github.io git:(master) ✗ bundle exec jekyll serve --livereload
 Configuration file: /Users/uei/hky/code/my-blog/hukeyi.github.io/_config.yml
 To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
@@ -184,7 +186,7 @@ bundler: failed to load command: jekyll (/Users/uei/.gem/ruby/3.1.2/bin/jekyll)
 
 成功在本地运行：
 
-```zsh
+```console
 (base) ➜  hukeyi.github.io git:(master) ✗ bundle exec jekyll serve --livereload
 Configuration file: /Users/uei/hky/code/my-blog/hukeyi.github.io/_config.yml
 To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
