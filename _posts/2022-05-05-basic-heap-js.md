@@ -1,5 +1,5 @@
 ---
-title: 【基础算法02】大小顶堆 Javascript 实现 + 面试快速手写堆
+title: 【基础算法】大小顶堆 Javascript 实现 + 面试快速手写堆
 author: hukeyi
 date: 2022-05-05 14:34:00 +0800
 categories: [数据结构与算法, 基础]
