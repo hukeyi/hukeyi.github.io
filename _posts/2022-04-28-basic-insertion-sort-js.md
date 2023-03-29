@@ -51,7 +51,7 @@ function insertionSort(arr) {
 function insertionSort2(arr) {
     const len = arr.length;
     for (let i = 0; i < len; i++) {
-		// 以当前拿起的牌（curr）的值为准，往【前】查找curr应该放置的位置
+        // 以当前拿起的牌（curr）的值为准，往【前】查找curr应该放置的位置
         // e.g. 【0，2，4】（1）...
         // j从4开始往前/左遍历，只要当前arr[j]大于curr，那么arr[j]就应该往后/右挪
         // 直到arr[0]=0<1，for循环终止，说明curr应放在arr[0]后一位

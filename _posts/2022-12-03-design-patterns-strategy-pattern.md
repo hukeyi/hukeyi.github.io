@@ -24,12 +24,12 @@ toc: true
 ```js
 // 超类鸭子
 class Duck {
-	quack() { // 叫
-		console.log('呱呱叫');
-	}
-	fly() { // 飞
-		console.log('飞');
-	}
+    quack() { // 叫
+        console.log('呱呱叫');
+    }
+    fly() { // 飞
+        console.log('飞');
+    }
 }
 ```
 
@@ -38,26 +38,26 @@ class Duck {
 ```js
 // 番鸭，继承超类鸭子
 class MallardDuck extends Duck {
-	// 重写呱呱叫方法
-	quack() {
-		console.log('嘎嘎叫');
-	}
-	// 重写飞方法
-	fly() {
-		console.log('飞');
-	}
+    // 重写呱呱叫方法
+    quack() {
+        console.log('嘎嘎叫');
+    }
+    // 重写飞方法
+    fly() {
+        console.log('飞');
+    }
 }
 
 // 野鸭，继承超类鸭子
 class WildDuck extends Duck {
-	// 重写呱呱叫方法
-	quack() {
-		console.log('嘎嘎叫');
-	}
-	// 重写飞方法
-	fly() {
-		console.log('飞');
-	}
+    // 重写呱呱叫方法
+    quack() {
+        console.log('嘎嘎叫');
+    }
+    // 重写飞方法
+    fly() {
+        console.log('飞');
+    }
 }
 ```
 
@@ -72,14 +72,14 @@ class WildDuck extends Duck {
 ```js
 // 宠物鸭，继承超类鸭子
 class PetDuck extends Duck {
-	// 重写叫
-	quack() {
-		console.log('哇哇叫');
-	}
-	// 重写飞
-	fly() {
-		console.log('不能飞');
-	}
+    // 重写叫
+    quack() {
+        console.log('哇哇叫');
+    }
+    // 重写飞
+    fly() {
+        console.log('不能飞');
+    }
 }
 ```
 
@@ -100,12 +100,12 @@ class PetDuck extends Duck {
 ```js
 // 定义鸭子叫的策略
 class QuackStrategy {
-	quack() {}
+    quack() {}
 }
 
 // 定义鸭子飞的策略
 class FlyStrategy {
-	fly() {}
+    fly() {}
 }
 ```
 
@@ -118,22 +118,22 @@ class FlyStrategy {
 ```js
 // 定义普通飞行策略
 class NormalFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('普通地飞');
-	}
+    fly() {
+        console.log('普通地飞');
+    }
 }
 
 // 定义随便飞策略
 class WildFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('随便地飞');
-	}
+    fly() {
+        console.log('随便地飞');
+    }
 }
 // 定义不能飞策略
 class NoFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('不能飞');
-	}
+    fly() {
+        console.log('不能飞');
+    }
 }
 ```
 
@@ -173,69 +173,69 @@ const WildDuck = new Duck(gua, fly);
 ```js
 // 定义鸭子叫的策略
 class QuackStrategy {
-	quack() {}
+    quack() {}
 }
 
 // 定义鸭子飞的策略
 class FlyStrategy {
-	fly() {}
+    fly() {}
 }
 
 // 定义呱呱叫策略
 class GuaQuackStrategy extends QuackStrategy {
-	quack() {
-		console.log('呱呱叫');
-	}
+    quack() {
+        console.log('呱呱叫');
+    }
 }
 // 定义嘎嘎叫策略
 class GaQuackStrategy extends QuackStrategy {
-	quack() {
-		console.log('嘎嘎叫');
-	}
+    quack() {
+        console.log('嘎嘎叫');
+    }
 }
 // 定义哇哇叫策略
 class WaQuackStrategy extends QuackStrategy {
-	quack() {
-		console.log('哇哇叫');
-	}
+    quack() {
+        console.log('哇哇叫');
+    }
 }
 
 // 定义普通飞行策略
 class NormalFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('普通地飞');
-	}
+    fly() {
+        console.log('普通地飞');
+    }
 }
 
 // 定义随便飞策略
 class WildFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('随便地飞');
-	}
+    fly() {
+        console.log('随便地飞');
+    }
 }
 // 定义不能飞策略
 class NoFlyStrategy extends FlyStrategy {
-	fly() {
-		console.log('不能飞');
-	}
+    fly() {
+        console.log('不能飞');
+    }
 }
 
 // 定义鸭子类，使用策略模式
 class Duck {
-	constructor(quackStrategy, flyStrategy) {
-		this.quackStrategy = quackStrategy;
-		this.flyStrategy = flyStrategy;
-	}
+    constructor(quackStrategy, flyStrategy) {
+        this.quackStrategy = quackStrategy;
+        this.flyStrategy = flyStrategy;
+    }
 
-	// 呱呱叫
-	quack() {
-		this.quackStrategy.quack();
-	}
+    // 呱呱叫
+    quack() {
+        this.quackStrategy.quack();
+    }
 
-	// 飞
-	fly() {
-		this.flyStrategy.fly();
-	}
+    // 飞
+    fly() {
+        this.flyStrategy.fly();
+    }
 }
 
 // User Code
@@ -262,55 +262,55 @@ PetDuck.fly(); // 不能飞
 
 ```js
 class ShoppingCart {
-	constructor(discountStrategy) {
-		this.discountStrategy = discountStrategy;
-		this.items = [];
-	}
-	addItem(item) {
-		this.items.push(item);
-	}
-	removeItem(item) {
-		/* ... */
-	}
-	getTotal() {
-		let total = 0;
-		this.items.forEach((item) => {
-			total += item.price;
-		});
-		return total;
-	}
-	getTotalAfterDiscount() {
-		const discount = this.discountStrategy.calculateDiscount(this);
-		return this.getTotal() - discount;
-	}
+    constructor(discountStrategy) {
+        this.discountStrategy = discountStrategy;
+        this.items = [];
+    }
+    addItem(item) {
+        this.items.push(item);
+    }
+    removeItem(item) {
+        /* ... */
+    }
+    getTotal() {
+        let total = 0;
+        this.items.forEach((item) => {
+            total += item.price;
+        });
+        return total;
+    }
+    getTotalAfterDiscount() {
+        const discount = this.discountStrategy.calculateDiscount(this);
+        return this.getTotal() - discount;
+    }
 }
 
 // 折扣策略
 class NoDiscount {
-	// 无折扣
-	calculateDiscount() {
-		return 0;
-	}
+    // 无折扣
+    calculateDiscount() {
+        return 0;
+    }
 }
 
 class FixedDiscount {
-	// 固定折扣，比如减 50 元
-	constructor(discountAmount) {
-		this.discountAmount = discountAmount;
-	}
-	calculateDiscount() {
-		return this.discountAmount;
-	}
+    // 固定折扣，比如减 50 元
+    constructor(discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+    calculateDiscount() {
+        return this.discountAmount;
+    }
 }
 
 class PercentageDiscount {
-	// 百分比折扣，比如打 5 折
-	constructor(discountPercentage) {
-		this.discountPercentage = discountPercentage;
-	}
-	calculateDiscount(context) {
-		return context.getTotal() * (this.discountPercentage / 100);
-	}
+    // 百分比折扣，比如打 5 折
+    constructor(discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
+    calculateDiscount(context) {
+        return context.getTotal() * (this.discountPercentage / 100);
+    }
 }
 
 // User Code

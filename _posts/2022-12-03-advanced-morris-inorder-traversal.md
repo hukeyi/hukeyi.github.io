@@ -59,23 +59,23 @@ var inorderTraversal = function(root) {
     while (curr){
         // is leftmost node?
         if (!curr.left){ // yes
-	        // 左子树为空
+            // 左子树为空
             ans.push(curr.val); // 则处理根结点
             curr = curr.right; // 根结点处理完毕后转到右子树
         }else{ // no
-	        // succ 为 curr 的左子树的最右结点，即 curr 的前驱结点；
-	        // 反之 succ 为 curr 的后继结点
+            // succ 为 curr 的左子树的最右结点，即 curr 的前驱结点；
+            // 反之 succ 为 curr 的后继结点
             let succ = getSuccessor(curr);
             // 众所周知，二叉树的遍历过程中，每一个结点会被经过 3 次
-		    // if 为第一次经过结点 curr 时（正在沿路下降到左子树）的处理
-		    // else 为第二次经过结点 curr 时（左子树处理完毕回到根结点）的处理
-		    // （迭代的方法无法捕捉到第三次，不过不重要，这里不需要捕捉第三次经过结点）
+            // if 为第一次经过结点 curr 时（正在沿路下降到左子树）的处理
+            // else 为第二次经过结点 curr 时（左子树处理完毕回到根结点）的处理
+            // （迭代的方法无法捕捉到第三次，不过不重要，这里不需要捕捉第三次经过结点）
             if (!succ.right){ // succ.right···>curr 这条线还没连上
-	            // 在根结点下到左子树结点过程中，一路连接沿路各根结点与其前驱结点
+                // 在根结点下到左子树结点过程中，一路连接沿路各根结点与其前驱结点
                 succ.right = curr; // link the way back
                 curr = curr.left; // continue going down the left child-tree
             }else{ 
-	            // succ.right···>curr 已连上，且已利用这条线从左子树回到根结点 curr
+                // succ.right···>curr 已连上，且已利用这条线从左子树回到根结点 curr
                 succ.right = null; // break the link
                 ans.push(curr.val); // curr 的左子树已遍历完，该处理 curr（根结点）了
                 curr = curr.right; // 上一句处理完根结点，本句转移到右子树

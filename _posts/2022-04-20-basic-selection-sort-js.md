@@ -13,7 +13,7 @@ toc: true
 
 ```javascript
 // 交换 arr 中下标为 i 和 j 的元素值
-function swap(arr, i, j){
+function swap(arr, i, j) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
 }
 ```
@@ -33,9 +33,11 @@ function swap(arr, i, j){
 ```javascript
 function selectionSort(arr) {
     const len = arr.length;
-    for (let i = 0; i < len; i++) { // 第一个循环定位本轮要填的牌位
+    for (let i = 0; i < len; i++) {
+        // 第一个循环定位本轮要填的牌位
         let minIndex = i; // 搜索区间最小值下标
-        for (let j = i; j < len; j++) { // 第二个循环找符合牌位条件的牌的下标
+        for (let j = i; j < len; j++) {
+            // 第二个循环找符合牌位条件的牌的下标
             if (arr[j] < arr[minIndex]) minIndex = j;
         }
         swap(arr, i, minIndex); // 交换牌位原元素和符合条件的元素

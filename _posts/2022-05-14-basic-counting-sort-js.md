@@ -21,7 +21,7 @@ toc: true
 
 ```javascript
 function countSort(nums) {
-	const len = nums.length, 
+    const len = nums.length, 
           max = Math.max(...nums),
           min = Math.min(...nums),
           size = max - min + 1; // count数组的size

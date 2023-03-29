@@ -250,7 +250,7 @@ insert(val) {
 ```javascript
 buildHeap(heap){
     for (let i = 0; i < heap.length; i++){
-     	this.insert(heap[i]);
+         this.insert(heap[i]);
     }
 }
 ```
@@ -317,143 +317,150 @@ constructor(compareFunc = (x, y) => x - y, heap = []) {
  * 默认小顶堆，在new时输入(x,y)=>y-x后创建的即是大顶堆
  */
 class Heap {
-	/**
-	 * 如果输入的不是空数组，则new时自动建堆
-	 * @param {*} compareFunc 比较函数。默认为小顶堆，如果想要大顶需要输入(x,y)=>y-x
-	 * @param {*} heap 数组
-	 */
-	constructor(compareFunc = (x, y) => x - y, heap = []) {
-		this.heap = heap;
-		this.size = heap.length;
-		this.compare = compareFunc;
-		this.buildHeap();
-	}
-	isEmpty() {
-		return this.size === 0;
-	}
-	/**
-	 * 获得堆顶结点的值
-	 */
-	getTop() {
-		return this.size > 0 ? this.heap[0] : undefined;
-	}
-	/**
-	 * 获得堆最末尾结点的值
-	 */
-	getLast() {
-		return this.size > 0 ? this.heap[this.size - 1] : undefined;
-	}
-	print() {
-		console.log(this.heap.slice(0, this.size));
-	}
-	isLeaf(pos) {
-		return pos >= Math.floor(this.size / 2) && pos < this.size;
-	}
-	leftChild(pos) {
-		return 2 * pos + 1;
-	}
-	rightChild(pos) {
-		return 2 * pos + 2;
-	}
-	parent(pos) {
-		return (pos - 1) >> 1;
-	}
-	/**
-	 * 比较两数大小关系
-	 * @param {*} n1
-	 * @param {*} n2
-	 * @returns 小顶堆n1 > n2 true；大顶堆n1 < n2 true
-	 */
-	compareItems(n1, n2) {
-		return this.compare(n1, n2) > 0;
-	}
-	/**
-	 * 堆内插入新元素，先放到堆尾，然后结点向上移动
-	 * 时间复杂度 o(logn)
-	 * @param {*} pos 要往上移动的结点下标
-	 */
-	heapifyUp(pos) {
-		let parent = this.parent(pos);
-		// 当pos还没到顶 && pos的父结点值大于/小于pos值时，pos与父结点交换
-		while (pos && this.compareItems(this.heap[parent], this.heap[pos])) {
-			// pos与当前父结点交换
-			[this.heap[pos], this.heap[parent]] = [this.heap[parent], this.heap[pos]];
-			pos = parent;
-			// 获得交换后pos的新父结点
-			parent = this.parent(pos);
-		}
-	}
-	/**
-	 * 当堆顶元素被取走后，需要重整堆内元素
-	 * 将末尾元素移到堆顶，然后逐级下降直到满足堆的性质条件
-	 * 时间复杂度: o(logn)
-	 * @param {*} pos
-	 */
-	heapifyDown(pos) {
-		// 已经是叶子结点了，不必继续向下
-		if (this.isLeaf(pos)) return;
-		let left = this.leftChild(pos),
-			right = this.rightChild(pos),
-			temp = 0;
-		while (!this.isLeaf(pos)) {
-			// 先假设左子结点为 temp
-			temp = left;
-			// 如果右子结点存在，且值小于左子结点
-			if (
-				right < this.size &&
-				this.compareItems(this.heap[temp], this.heap[right])
-			) {
-				temp = right;
-			}
-			// 如果pos大于自己子结点中更小的，那么就往下，否则结束
-			if (this.compareItems(this.heap[pos], this.heap[temp])) {
-				[this.heap[pos], this.heap[temp]] = [this.heap[temp], this.heap[pos]];
-				pos = temp;
-				left = this.leftChild(pos);
-				right = this.rightChild(pos);
-			} else break;
-		}
-	}
-	/**
-	 * 从下到上建堆，直接由一个数组原地建堆
-	 */
-	buildHeap() {
-		for (let i = (this.size >> 1) - 1; i >= 0; i--) {
-			this.heapifyDown(i);
-		}
-	}
-	/**
-	 * 插入新结点，放到堆末尾，然后逐级上升
-	 * @param {*} val
-	 */
-	insert(val) {
-		let pos = this.size++;
-		this.heap[pos] = val;
-		this.heapifyUp(pos);
-	}
-	removeTop() {
-		return this.remove(0);
-	}
-	/**
-	 * 删除指定位置的结点
-	 * @param {*} pos
-	 * @returns 删除结点的值；若输入pos不在堆中，则返回undefined
-	 */
-	remove(pos) {
-		if (pos < this.size) {
-			let last = this.getLast();
-			let delNode = this.heap[pos];
-			this.size--;
-			// 如果pos恰好是最末尾结点，那么直接修改size就可以了，否则要进行重整
-			// if上一句代码已经this.size--了，所以判断是否末尾无需再减1
-			if (pos < this.size) {
-				this.heap[pos] = last; // 用最末尾结点的值覆盖待删结点的位置
-				this.heapifyDown(pos);
-			}
-			return delNode;
-		}
-	}
+    /**
+     * 如果输入的不是空数组，则new时自动建堆
+     * @param {*} compareFunc 比较函数。默认为小顶堆，如果想要大顶需要输入(x,y)=>y-x
+     * @param {*} heap 数组
+     */
+    constructor(compareFunc = (x, y) => x - y, heap = []) {
+        this.heap = heap;
+        this.size = heap.length;
+        this.compare = compareFunc;
+        this.buildHeap();
+    }
+    isEmpty() {
+        return this.size === 0;
+    }
+    /**
+     * 获得堆顶结点的值
+     */
+    getTop() {
+        return this.size > 0 ? this.heap[0] : undefined;
+    }
+    /**
+     * 获得堆最末尾结点的值
+     */
+    getLast() {
+        return this.size > 0 ? this.heap[this.size - 1] : undefined;
+    }
+    print() {
+        console.log(this.heap.slice(0, this.size));
+    }
+    isLeaf(pos) {
+        return pos >= Math.floor(this.size / 2) && pos < this.size;
+    }
+    leftChild(pos) {
+        return 2 * pos + 1;
+    }
+    rightChild(pos) {
+        return 2 * pos + 2;
+    }
+    parent(pos) {
+        return (pos - 1) >> 1;
+    }
+    /**
+     * 比较两数大小关系
+     * @param {*} n1
+     * @param {*} n2
+     * @returns 小顶堆n1 > n2 true；大顶堆n1 < n2 true
+     */
+    compareItems(n1, n2) {
+        return this.compare(n1, n2) > 0;
+    }
+    /**
+     * 堆内插入新元素，先放到堆尾，然后结点向上移动
+     * 时间复杂度 o(logn)
+     * @param {*} pos 要往上移动的结点下标
+     */
+    heapifyUp(pos) {
+        let parent = this.parent(pos);
+        // 当pos还没到顶 && pos的父结点值大于/小于pos值时，pos与父结点交换
+        while (pos && this.compareItems(this.heap[parent], this.heap[pos])) {
+            // pos与当前父结点交换
+            [this.heap[pos], this.heap[parent]] = [
+                this.heap[parent],
+                this.heap[pos],
+            ];
+            pos = parent;
+            // 获得交换后pos的新父结点
+            parent = this.parent(pos);
+        }
+    }
+    /**
+     * 当堆顶元素被取走后，需要重整堆内元素
+     * 将末尾元素移到堆顶，然后逐级下降直到满足堆的性质条件
+     * 时间复杂度: o(logn)
+     * @param {*} pos
+     */
+    heapifyDown(pos) {
+        // 已经是叶子结点了，不必继续向下
+        if (this.isLeaf(pos)) return;
+        let left = this.leftChild(pos),
+            right = this.rightChild(pos),
+            temp = 0;
+        while (!this.isLeaf(pos)) {
+            // 先假设左子结点为 temp
+            temp = left;
+            // 如果右子结点存在，且值小于左子结点
+            if (
+                right < this.size &&
+                this.compareItems(this.heap[temp], this.heap[right])
+            ) {
+                temp = right;
+            }
+            // 如果pos大于自己子结点中更小的，那么就往下，否则结束
+            if (this.compareItems(this.heap[pos], this.heap[temp])) {
+                [this.heap[pos], this.heap[temp]] = [
+                    this.heap[temp],
+                    this.heap[pos],
+                ];
+                pos = temp;
+                left = this.leftChild(pos);
+                right = this.rightChild(pos);
+            } else break;
+        }
+    }
+    /**
+     * 从下到上建堆，直接由一个数组原地建堆
+     */
+    buildHeap() {
+        for (let i = (this.size >> 1) - 1; i >= 0; i--) {
+            this.heapifyDown(i);
+        }
+    }
+    /**
+     * 插入新结点，放到堆末尾，然后逐级上升
+     * @param {*} val
+     */
+    insert(val) {
+        let pos = this.size++;
+        this.heap[pos] = val;
+        this.heapifyUp(pos);
+    }
+    removeTop() {
+        return this.remove(0);
+    }
+    /**
+     * 删除指定位置的结点
+     * @param {*} pos
+     * @returns 删除结点的值；若输入pos不在堆中，则返回undefined
+     */
+    remove(pos) {
+        if (pos < this.size) {
+            let last = this.getLast();
+            let delNode = this.heap[pos];
+            this.size--;
+            // 如果pos恰好是最末尾结点，那么直接修改size就可以了，否则要进行重整
+            // if上一句代码已经this.size--了，所以判断是否末尾无需再减1
+            if (pos < this.size) {
+                this.heap[pos] = last; // 用最末尾结点的值覆盖待删结点的位置
+                this.heapifyDown(pos);
+            }
+            return delNode;
+        }
+    }
 }
+
 ```
 
 # 面试快速手写堆
@@ -462,66 +469,66 @@ class Heap {
 
 ```javascript
 class Heap {
-	constructor(func) {
-		this.h = [];
-		this.size = 0;
-		this.func = func;
-	}
-	comp(a, b) {
-		return this.func(this.h[a], this.h[b]) > 0;
-	}
-	swap(a, b) {
-		[this.h[a], this.h[b]] = [this.h[b], this.h[a]];
-	}
-	/**
-	 * 下面三个函数可略过，直接在主函数内写公式
-	 */
-	left(p) {
-		return p * 2 + 1;
-	}
-	right(p) {
-		return p * 2 + 2;
-	}
-	parent(p) {
-		return (p - 1) >> 1;
-	}
-	/**
-	 * 以上三个函数可略过，直接在主函数内写公式
-	 */
-	isLeaf(p) {
-		return p >= this.size >> 1 && p < this.size;
-	}
-	swim(p) {
-		let parent = this.parent(p);
-		while (p > 0 && this.comp(parent, p)) {
-			this.swap(p, parent);
-			p = parent;
-			parent = this.parent(p);
-		}
-	}
-	sink(p) {
-		while (!this.isLeaf(p)) {
-			let l = this.left(p),
-				r = this.right(p),
-				next = l;
-			if (r < this.size && this.comp(next, r)) next = r;
+    constructor(func) {
+        this.h = [];
+        this.size = 0;
+        this.func = func;
+    }
+    comp(a, b) {
+        return this.func(this.h[a], this.h[b]) > 0;
+    }
+    swap(a, b) {
+        [this.h[a], this.h[b]] = [this.h[b], this.h[a]];
+    }
+    /**
+     * 下面三个函数可略过，直接在主函数内写公式
+     */
+    left(p) {
+        return p * 2 + 1;
+    }
+    right(p) {
+        return p * 2 + 2;
+    }
+    parent(p) {
+        return (p - 1) >> 1;
+    }
+    /**
+     * 以上三个函数可略过，直接在主函数内写公式
+     */
+    isLeaf(p) {
+        return p >= this.size >> 1 && p < this.size;
+    }
+    swim(p) {
+        let parent = this.parent(p);
+        while (p > 0 && this.comp(parent, p)) {
+            this.swap(p, parent);
+            p = parent;
+            parent = this.parent(p);
+        }
+    }
+    sink(p) {
+        while (!this.isLeaf(p)) {
+            let l = this.left(p),
+                r = this.right(p),
+                next = l;
+            if (r < this.size && this.comp(next, r)) next = r;
 
-			if (this.comp(p, next)) {
-				this.swap(next, p);
-				p = next;
-			} else break;
-		}
-	}
-	insert(val) {
-		this.h[this.size++] = val;
-		this.swim(this.size - 1);
-	}
-	removeTop() {
-		let top = this.h[0];
-		this.swap(0, this.size - 1);
-		this.size--;
-		if (this.size > 0) this.sink(0);
-		return top;
-	}
+            if (this.comp(p, next)) {
+                this.swap(next, p);
+                p = next;
+            } else break;
+        }
+    }
+    insert(val) {
+        this.h[this.size++] = val;
+        this.swim(this.size - 1);
+    }
+    removeTop() {
+        let top = this.h[0];
+        this.swap(0, this.size - 1);
+        this.size--;
+        if (this.size > 0) this.sink(0);
+        return top;
+    }
 }
 ```
