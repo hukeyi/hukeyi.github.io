@@ -1,15 +1,12 @@
 ---
-title: 【设计模式】策略模式的概念和代码讲解
+title: 【设计模式】详解策略模式
 author: hukeyi
 date: 2022-12-04 16:37:00 +0800
 categories: [设计模式, 理论]
-tags: [设计模式]
+tags: [设计模式, javascript]
 math: true
-mermaid: true
 toc: true
 ---
-
-## 简介
 
 策略模式将不同的算法封装到各自的策略类中，使得它们可以互相替换，以达到动态改变对象的行为的目的。
 
