@@ -48,37 +48,37 @@ toc: true
 
 ```js
 class Subject {
-	// 被观察者（发布者）
-	constructor() {
-		this.observers = []; // 观察 Subject 的观察者的列表
-	}
-	addObserver(observer) { // 添加观察者
-		this.observers.push(observer);
-	}
-	removeObserver(observer) { // 删除观察者
-		this.observers = this.observers.filter((obs) => obs !== observer);
-	}
-	notify() { // 通知更新
-		this.observers.forEach((observer) => observer.update());
-	}
+    // 被观察者（发布者）
+    constructor() {
+        this.observers = []; // 观察 Subject 的观察者的列表
+    }
+    addObserver(observer) { // 添加观察者
+        this.observers.push(observer);
+    }
+    removeObserver(observer) { // 删除观察者
+        this.observers = this.observers.filter((obs) => obs !== observer);
+    }
+    notify() { // 通知更新
+        this.observers.forEach((observer) => observer.update());
+    }
 }
 class Observer {
-	// 观察者（订阅者）
-	constructor(name) {
-		this.name = name;
-		this.subject = null; // 通常会观察多个对象，一般设置为数组，这里简化处理
-	}
-	update() { // 响应更新
-		console.log(`Observer ${this.name} notified of a change!`);
-	}
-	subscribe(subject) { // 关注/订阅
-		this.subject = subject;
-		this.subject.addObserver(this);
-	}
-	unsubscribe() { // 取消关注/取消订阅
-		if (this.subject) this.subject.removeObserver(this);
-		this.subject = null;
-	}
+    // 观察者（订阅者）
+    constructor(name) {
+        this.name = name;
+        this.subject = null; // 通常会观察多个对象，一般设置为数组，这里简化处理
+    }
+    update() { // 响应更新
+        console.log(`Observer ${this.name} notified of a change!`);
+    }
+    subscribe(subject) { // 关注/订阅
+        this.subject = subject;
+        this.subject.addObserver(this);
+    }
+    unsubscribe() { // 取消关注/取消订阅
+        if (this.subject) this.subject.removeObserver(this);
+        this.subject = null;
+    }
 }
 
 // User code
