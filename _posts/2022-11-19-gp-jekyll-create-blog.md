@@ -8,9 +8,7 @@ math: true
 toc: true
 ---
 
-本文仅是我搭建博客的过程记录笔记。
-
-如果你想要搭建与我同样主题的博客，请直接阅读 [Chirpy getting-started](https://chirpy.cotes.page/posts/getting-started/)。
+本文是我搭建博客的过程记录笔记。如果你想要搭建与我同样主题的博客，请直接阅读 [Chirpy getting-started](https://chirpy.cotes.page/posts/getting-started/)。
 
 ## 环境准备
 
