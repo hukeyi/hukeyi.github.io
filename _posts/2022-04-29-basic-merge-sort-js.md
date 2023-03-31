@@ -5,7 +5,6 @@ date: 2022-04-29 19:24:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 

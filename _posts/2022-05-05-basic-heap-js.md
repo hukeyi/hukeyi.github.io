@@ -1,31 +1,28 @@
 ---
-title: 【基础算法】大小顶堆 Javascript 实现 + 面试快速手写堆
+title: 【基础算法】详解堆+面试快速手写堆代码
 author: hukeyi
 date: 2022-05-05 14:34:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 
-# 堆的概念
+## 堆的概念
 
-## 属性
+### 属性
 
 堆是一颗**完全二叉树**（complete binary tree)。这个前提非常重要，记住这一点才能理解父子结点的索引值关系以及判断叶子结点的原理。
 
-> 注意：分清完全二叉树和满二叉树。
->
-> 针对满二叉树，国内外定义不同：
+> 注意：分清完全二叉树和满二叉树。对于满二叉树，国内外定义不同（本文跟随国际定义）：
 >
 > - 国内，仅下图(a)才能叫做满二叉树，满二叉树是完全二叉树的特殊形态。满二叉树必定是完全二叉树；反之不一定。
 > - 国际，**下图(a)与下图(c)都叫"full binary tree"，即一个结点的子结点数要么是 0 要么是 2**。满二叉树不一定是完全二叉树，反之也不一定。
-{: .prompt-warning }
+{: .prompt-info }
 
-![二叉树的类型](/assets/img/22-05/binary_tree_type.png)
+![二叉树的分类](/assets/img/22-05/binary_tree_type.png){: width="60%" height="60%" }
 
-## 分类
+### 分类
 
 分类依据：堆顶元素 & 父子大小关系。
 
@@ -34,24 +31,26 @@ toc: true
 
 顾名思义，大顶堆就是堆顶是堆的最大值，父结点与子结点关系是父的结点值大于子结点值；小顶堆正相反，堆顶是堆的最小值，父小于子。
 
-# 堆的操作
+## 堆的操作
 
-> 备注：以下各段代码截取自本文第 3 节的 Heap 类完整实现。`this.size`指当前堆的结点总数。
+> 备注：`this.size`指当前堆的结点总数。
 {: .prompt-info }
 
-## 小疑问：`heap[0]`还是`heap[1]`？
+### 选 0-based 还是 1-based？
 
 首先，先理清一个疑问：根结点应该放在 `heap[0]` 还是 `heap[1]` ？似乎有一种观点认为，把根节点放在 `heap[1]` 能够稍微优化运算速度。
 
 从下标 1 开始实现堆是否是公认的更高效做法？我谷歌后搜索到这个回答[stackoverflow: Why in a heap implemented by array the index 0 is left unused?](https://stackoverflow.com/questions/22900388/why-in-a-heap-implemented-by-array-the-index-0-is-left-unused)，最高赞答案的观点是：1-based 并不更高效。
 
-查了下 Java 的优先队列[源码](http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/PriorityQueue.java)，它是从下标 0 开始的。
+查了下 [Java 的优先队列源码](http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/PriorityQueue.java)，它是从下标 0 开始的。
 
 本篇笔记根据《数据结构与算法分析（第三版）》教材示例，选择从 `heap[0]` 开始存储。
 
-## 获得父/左子/右子结点
+### 获得父/左子/右子结点
 
-> 公式推导：[stackoverflow: How to prove that children in heap data structure are located at: 2\*n and 2\*n+1?](https://stackoverflow.com/questions/25203846/how-to-prove-that-children-in-heap-data-structure-are-located-at-2n-and-2n1)
+> 公式推导：
+> 
+> [stackoverflow: How to prove that children in heap data structure are located at: 2\*n and 2\*n+1?](https://stackoverflow.com/questions/25203846/how-to-prove-that-children-in-heap-data-structure-are-located-at-2n-and-2n1)
 {: .prompt-info }
 
 ```javascript
@@ -69,7 +68,7 @@ parent(pos) {
 }
 ```
 
-## 判断是否为叶子结点
+### 判断是否为叶子结点
 
 ```javascript
 isLeaf(pos) {
@@ -100,19 +99,17 @@ isLeaf(pos) {
 - 非叶子结点总数：`n//2`，非叶子区间 `[0, n//2)` => 因此，第一个叶子结点的下标：`n//2`
 - 叶子结点总数：`n-n//2`
 
-## 堆化
+### 堆化
 
 本节包含的两个函数，`heapifyUp` 和 `heapifyDown` 是堆其他重要操作（插入、删除、建堆）的基础工具。
 
-### 比较大小 `compareItems`
-
-`compareItems(a, b)`
+#### 比较大小
 
 小顶堆：a > b，true。前大于后
 
 大顶堆：a < b，true。前小于后
 
-### 结点往上层移动 `heapifyUp`【上浮】
+#### 结点往上层移动【上浮】
 
 其实就是 pos 所在的结点按照小顶堆/大顶堆的结点属性往上移动到该在的位置。
 
@@ -136,7 +133,7 @@ heapifyUp(pos) {
 
 while 循环中止条件：pos 上浮到了根结点位置 或 pos 的父结点值小于【小顶】/大于【大顶】pos 自身的值
 
-### 结点往下层移动`heapifyDown` 【下沉】
+#### 结点往下层移动【下沉】
 
 下沉比上浮略复杂，因为上浮只需要比较当前结点与其父结点；而下沉需要比较当前结点和其两个子结点。
 
@@ -174,7 +171,7 @@ heapifyDown(pos) {
 }
 ```
 
-### 时间复杂度均为 o(logn) 的原因
+#### 时间复杂度均为 o(logn) 的原因
 
 堆是完全二叉树，而二叉树的特性就是每个结点最多有两个子结点，因此每棵二叉树每层的结点数公式为：第 i 层结点数 = `2^i（i = 0, 1, ......)`。
 
@@ -184,7 +181,7 @@ heapifyDown(pos) {
 
 也就是说，`heapifyUp`和`heapifyDown`最多就是从顶层移动到底层，走`log(n)`步，因此时间复杂度均为 o(logn)。
 
-## 删除结点
+### 删除结点
 
 - 删除根结点
 
@@ -219,7 +216,7 @@ remove(pos) {
 
 如果是最末尾结点，则直接删掉。
 
-## 插入结点
+### 插入结点
 
 ```javascript
 insert(val) {
@@ -233,12 +230,12 @@ insert(val) {
 
 然后把新值先放到最末尾结点下标处，最后 heapifyUp，使其移动到自己该呆的位置。
 
-## 建堆
+### 建堆
 
 > 备注：区分“建堆”和“堆化”。前者是`buildHeap`，后者是`heapifyUp & heapifyDown`；前者是结点之间交换来交换去，后者是结点在层与层之间跨步；前者时间复杂度为 o(n)，后者为 o(logn)。
 {: .prompt-info }
 
-### 方法 1： 从下到上建堆（按序插入）
+#### 方法 1： 从下到上建堆
 
 > 备注：此方法好理解，但不常用，效率低。
 {: .prompt-info }
@@ -255,7 +252,7 @@ buildHeap(heap){
 }
 ```
 
-### 方法 2：从上到下建堆（非叶堆化）【常用】
+#### 方法 2：从上到下建堆【常用】
 
 从最后一个非叶子结点开始，将其向下 heapifyDown。因为叶子结点没有可以向下比较的结点了，它们在非叶子结点比较的过程中会参与比较，所以可以剩去一半的比较操作（叶子结点占全部结点的一半）。
 
@@ -268,7 +265,7 @@ buildHeap(){
 }
 ```
 
-### 建堆的时间复杂度 o(n)
+#### 建堆的时间复杂度 o(n)
 
 时间复杂度的推导直接看[这篇博文](https://blog.csdn.net/u010711495/article/details/117386069)。
 
@@ -276,7 +273,7 @@ buildHeap(){
 > S2 是 S1 的公式**两边同乘 2**得到的，`S2 = 2S1`，因此`S = S2 - S1 = 2S1 - S1 = S1`即`S = S1`
 {: .prompt-tip }
 
-# 小、大顶堆的代码区别：如何合并实现？
+## 小、大顶堆的代码区别：如何合并实现？
 
 区别主要在当前结点与其父或子结点比较时的比较函数，体现在代码中即比较函数`compareItems()`。
 
@@ -309,7 +306,7 @@ constructor(compareFunc = (x, y) => x - y, heap = []) {
 
 抽象出比较函数，小顶堆和大顶堆就可以合并实现为一个类（完整代码见下面第 4 节）。
 
-# 完整代码
+## 完整代码
 
 ```javascript
 /**
@@ -463,7 +460,7 @@ class Heap {
 
 ```
 
-# 面试快速手写堆
+## 面试快速手写堆
 
 以下代码用于面试时手写堆，熟练后能做到 5 分钟内写完。
 
@@ -532,3 +529,11 @@ class Heap {
     }
 }
 ```
+
+## 参考资料
+
+- [stackoverflow: Why in a heap implemented by array the index 0 is left unused?](https://stackoverflow.com/questions/22900388/why-in-a-heap-implemented-by-array-the-index-0-is-left-unused)
+-  [Java 优先队列源码](http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/PriorityQueue.java)
+- [stackoverflow: How to prove that children in heap data structure are located at: 2*n and 2*n+1?](https://stackoverflow.com/questions/25203846/how-to-prove-that-children-in-heap-data-structure-are-located-at-2n-and-2n1)
+- [CSDN: 如何建堆？](https://blog.csdn.net/u010711495/article/details/117386069)
+- 《数据结构与算法分析（第三版）》

@@ -1,11 +1,10 @@
 ---
-title: 【工具】Docker：image container volume 概念及其使用
+title: 【工具】Docker image/container/volume 概念及其使用
 author: hukeyi
 date: 2023-02-22 21:07:00 +0800
 categories: [工具]
 tags: [docker]
 math: true
-mermaid: true
 toc: true
 ---
 
@@ -24,6 +23,7 @@ Docker 最重要的三个概念：
 3. 通过 `docker run ...` 启动（run）一个容器（i.e. 运行 app）
 
 ![Docker 的三个基础概念关系图](/assets/img/2023/docker-file-image-container-relationships.png)
+_Dockerfile/Image/Container 的关系示意图_
 
 ## Image
 
@@ -38,6 +38,7 @@ COPY . .
 RUN yarn install --production
 CMD ["node", "./src/index.js"]
 ```
+{: file="./Dockerfile" }
 
 以上是 docker 101 tutorial 给的 Dockerfile。
 
@@ -50,6 +51,7 @@ Dockerfile 就是一个指示工作流程的文件，翻译成人话 belike：
 命令行执行 `yarn install --production`（i.e. 下载 app 所需的全部依赖，类似 npm install）
 当有容器 run 当前 image 时，自动执行 `node ./src/index.js`（i.e. 运行 app 的入口文件）
 ```
+{: file="./Dockerfile" }
 
 Dockerfile 和 image 的关系，好比程序源代码 `*.cpp` 和可执行程序 `*.exe` 的关系。
 
@@ -93,7 +95,9 @@ container 和 image 好比**进程**和**进程控制块 PCB**。
 
 > Simply put, a container is another **process** on your machine that has been isolated from all other processes on the host machine. 
 > 
-> Since the image contains the container's **filesystem**, it must include everything needed to run the application - all dependencies, configuration, scripts, binaries, etc. The image also contains other configuration for the container, such as environment variables, a default command to run, and other metadata.（from: 官方入门指南 docker 101 tutorial）
+> Since the image contains the container's **filesystem**, it must include everything needed to run the application - all dependencies, configuration, scripts, binaries, etc. The image also contains other configuration for the container, such as environment variables, a default command to run, and other metadata.
+> 
+> （from: 官方入门指南 docker 101 tutorial）
 
 只要对应的 image 还存在，container 可以随意删除。container 的所谓「删除」，相当于「关闭应用程序」。执行 `docker rm -f <container-id>` 时可以随意一点，无需担心删掉什么重要的东西。
 

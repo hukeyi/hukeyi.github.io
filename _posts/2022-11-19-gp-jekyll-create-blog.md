@@ -8,7 +8,7 @@ math: true
 toc: true
 ---
 
-本文是我搭建博客的过程记录笔记。如果你想要搭建与我同样主题的博客，请直接阅读 [Chirpy getting-started](https://chirpy.cotes.page/posts/getting-started/)。
+本文是我搭建博客的过程记录笔记。如果你想要搭建与我同样主题的博客，建议直接阅读 [Chirpy getting-started](https://chirpy.cotes.page/posts/getting-started/)。
 
 ## 环境准备
 
@@ -134,11 +134,9 @@ jekyll new .
 
 安装后，项目文件夹长这样：
 
-<img src="/assets/img/22-11/blog00.png" style="zoom:50%;" />
+![安装完成后项目文件夹的内容](/assets/img/22-11/blog00.png){: width="70%" height="70%" }
 
 ### 修改 Gemfile
-
-打开 Gemfile：
 
 ```config
 ...
@@ -152,6 +150,7 @@ gem "minima", "~> 2.5"
 # gem "github-pages", group: :jekyll_plugins
 ...
 ```
+{: file="Gemfile" }
 
 按照下面的【...】注释修改，修改完保存：
 
@@ -162,10 +161,11 @@ gem "minima", "~> 2.5"
 #【去掉下一行的注释，并且修改版本号（此处为 227，具体填多少见下面给的 Dependency versions)】
 gem "github-pages", "~> 227", group: :jekyll_plugins
 ```
+{: file="Gemfile" }
 
 点开 [Dependency versions: GitHub pages](https://pages.github.com/versions/)，找到 `github-pages` 那行对应的版本号：
 
-<img src="/assets/img/22-11/blog01.png" style="zoom:50%;" />
+![Dependency versions: Github pages 内容示意](/assets/img/22-11/blog01.png){: width="50%" height="50%" }
 
 修改完 Gemfile 文件长这样：
 
@@ -248,4 +248,4 @@ LiveReload address: http://127.0.0.1:35729
 
 [官方指南：选择主题](https://jekyllrb.com/docs/themes/#pick-up-a-theme)中提供了几个主题网站供选择。本博客使用 [chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)。
 
-本博客因为已经搭建好环境，所以采用 zip 下载代码包，清空 `hukeyi.github.io` 项目文件夹后把代码包解压后复制到项目文件夹，再从 chirpy 官方入门指南的 [安装选择 2](https://chirpy.cotes.page/posts/getting-started/#option-2-forking-on-github)开始执行，就成功了。
+本博客已建好 Github 仓库，所以没有采用 fork 或 starter 的搭建方式，而是直接下载代码压缩包，清空 `hukeyi.github.io` 项目文件夹后把代码包解压后复制到项目文件夹。最后从 chirpy 官方入门指南的 [安装选择 2](https://chirpy.cotes.page/posts/getting-started/#option-2-forking-on-github)开始执行，就成功了。

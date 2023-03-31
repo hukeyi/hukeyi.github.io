@@ -5,7 +5,6 @@ date: 2022-04-20 20:59:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 
@@ -18,11 +17,10 @@ function swap(arr, i, j) {
 }
 ```
 
-# 排序算法之选择排序
+> 测试排序算法：[leetcode：912. 排序数组](https://leetcode.cn/problems/sort-an-array/)
+{: .prompt-info}
 
 狭义的“选择排序”指直接选择排序。本文默认升序。
-> 参考：[CSDN：排序算法总结](https://blog.csdn.net/yushiyi6453/article/details/76407640)；测试排序算法：[leetcode：912. 排序数组](https://leetcode.cn/problems/sort-an-array/)
-{: .prompt-info}
 
 ## 直接选择排序
 
@@ -109,14 +107,17 @@ function heapSort(arr) {
 
 看下面的例子：（“｜”前是堆内元素数组，后面是已排好序的`arr`数组）
 
-```
-【最初 maxheap 内】
+```js
+// 最初 maxheap 内
 [95, 34, 10, 6, 21, 2, 9, 2, 3, 7, 3, 1｜]
-【第一轮】
+// 第一轮
 [34, 21, 10, 6, 7, 2, 9, 2, 3, 1, 3｜95]
-【第二轮】
+// 第二轮
 [21, 7, 10, 6, 3, 2, 9, 2, 3, 1｜34, 95]
-【第三轮】
+// 第三轮
 [10, 7, 9, 6, 3, 2, 1, 2, 3｜21, 34, 95]
 ```
 
+## 参考资料
+
+- [CSDN：排序算法总结](https://blog.csdn.net/yushiyi6453/article/details/76407640)

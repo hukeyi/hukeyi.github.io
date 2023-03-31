@@ -5,15 +5,13 @@ date: 2022-05-16 20:50:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 
 将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后，数列就变成一个有序序列。
 
-下图为LSD：
-
-![](/assets/img/2022/radixsort01.png)
+![LSD 示意图](/assets/img/2022/radixsort01.png)
+_LSD 示意图_
 
 基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
 
@@ -58,9 +56,6 @@ function radixSortLSD(nums) {
 - 稳定性：稳定。因为相同元素始终会被放在同一个桶中，而两者的相对位置始终维持最开始的位置不变，因为插入顺序始终保持最初的相对顺序。
 
 ## MSD基数排序
-
-> 参考：[Youtube: Josh Hug - Radix Sorts, Video 6 MSD Sort](https://www.youtube.com/watch?v=bg-qnrQS82I&ab_channel=JoshHug)
-{: .prompt-info }
 
 比LSD基数排序**更优**，MSD基数排序只会在最坏情况遍历数字的所有数位。
 
@@ -110,9 +105,10 @@ Expect: 1,2,2,3,3,6,7,9,10,21,34,95
 
 调试发现：
 
-> 10分位排序后: 2,1,6,3,9,2,3,7,10,21,34,95
-> 
-> 1分位排序后: 10,1,21,2,2,3,3,34,95,6,7,9
+```text
+10分位排序后: 2,1,6,3,9,2,3,7,10,21,34,95
+1分位排序后: 10,1,21,2,2,3,3,34,95,6,7,9
+```
 
 第一轮按照十分位排序，结果看起来没毛病：个位数都排在了前面（因为它们十分位都是0），两位数都在后面，并且两位数是按照升序排列好了；
 
@@ -126,7 +122,8 @@ Expect: 1,2,2,3,3,6,7,9,10,21,34,95
 
 由下图可以看到，排序过程中很可能不会遍历到元素的所有数位，就能够排序完成，这是MSD排序优于LSD的关键。MSD基数排序的最佳状况是在第一轮排序最高位时就完成数组排序，此时只需要花费o(n + r)的时间。
 
-![](/assets/img/2022/radixsort02.png)
+![MSD 示意图](/assets/img/2022/radixsort02.png)
+_MSD示意图，截取自参考视频_
 
 ```javascript
 function radixSortMSD(nums) {
@@ -163,3 +160,7 @@ function radixSortMSD(nums) {
 - 时间复杂度：最好o(n + r)，最坏o((n + r) * k)，每轮最后需重排组合`nums`时，花费o(r)
 - 空间复杂度：o(n + k * r)，MSD基数排序使用递归，因此会比LSD费更多内存
 - 稳定性：稳定
+
+## 参考资料
+
+- [Youtube: Josh Hug - Radix Sorts, Video 6 MSD Sort](https://www.youtube.com/watch?v=bg-qnrQS82I&ab_channel=JoshHug)

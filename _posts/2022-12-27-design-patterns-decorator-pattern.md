@@ -91,7 +91,7 @@ class Beverage{
 
 让我们先来看一下装饰者模式的类图（截取自[参考视频](https://www.youtube.com/watch?v=GCraGHx6gso&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=3&ab_channel=ChristopherOkhravi)）：
 
-![装饰者模式星巴克例子的类图](/assets/img/2022/design-pattern-hf-03-00.png)
+![装饰者模式星巴克例子的类图](/assets/img/2022/design-pattern-hf-03-00.png){: width="60%" height="60%"}
 
 **装饰者模式的核心：装饰者类既是（is-A） Beverage 超类的子类，又拥有（has-A）一个 Beverage 超类的另外子类的实例。**
 
@@ -185,7 +185,7 @@ class Caramel extends AddonDecorator {
 
 接下来，让我们来看一下如何将调料（装饰者）添加到饮料（被装饰者）中。我们如何获得「双倍 Soy 的 Espresso」饮料呢？
 
-![装饰者模式：双倍 Soy Espresso 示例图](/assets/img/2022/design-pattern-hf-03-01.png)
+![装饰者模式：双倍 Soy Espresso 示例图](/assets/img/2022/design-pattern-hf-03-01.png){: width="40%" height="40%" }
 
 ```js
 // 首先，创建一个饮料基底 espresso

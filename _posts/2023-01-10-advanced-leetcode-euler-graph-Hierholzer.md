@@ -5,7 +5,6 @@ date: 2023-01-10 21:57:00 +0800
 categories: [数据结构与算法, 进阶]
 tags: [leetcode, javascript]
 math: true
-mermaid: true
 toc: true
 ---
 
@@ -99,7 +98,7 @@ class Heap {/* 堆的代码略 */}
 
 e.g. 结点 node 代表 n-1 bits 数字 a<sub>1</sub>a<sub>2</sub>...a<sub>n-1</sub>，它的其中一条出边 x 连接的 n-1 bits 数字为 a<sub>2</sub>a<sub>3</sub>...a<sub>n-2</sub>x，node 和出边 x 组合起来代表的 n bits 数字是 a<sub>1</sub>a<sub>2</sub>...a<sub>n-1</sub>x。
 
-![题目图示](/assets/img/2023/230110-euler-00.png)
+![破解保险箱欧拉图图示](/assets/img/2023/230110-euler-00.png)
 
 此题的欧拉图不需要像上一题那样提前构造，在 dfs 过程中动态构造就 ok。
 

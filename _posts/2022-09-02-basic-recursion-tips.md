@@ -1,11 +1,10 @@
 ---
-title: 【基础算法】如何思考递归之搞清楚递归函数的返回值
+title: 【基础算法】如何思考递归之递归函数的返回值
 author: hukeyi
 date: 2022-09-02 22:51:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 

@@ -5,15 +5,10 @@ date: 2022-05-14 23:16:00 +0800
 categories: [数据结构与算法, 基础]
 tags: [javascript]
 math: true
-mermaid: true
 toc: true
 ---
 
-# 排序算法之计数排序 
-
-> 参考：[CSDN：图解计数排序](https://blog.csdn.net/weixin_44820625/article/details/106808623?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-106808623-blog-107865766.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-106808623-blog-107865766.pc_relevant_paycolumn_v3&utm_relevant_index=5)
-
-一种空间换时间的**非比较**方法。
+计数排序是一种空间换时间的**非比较**方法。
 
 - 开辟一个长度为数组数值跨度（最大值-最小值+1）的辅助数组（桶）
 - 遍历数组元素，将元素放置到各自应去的桶中
@@ -53,3 +48,7 @@ function countSort(nums) {
 > 1. 优化`count`数组，`count[i]`从**等于`min+i`**的元素个数变为**小于等于`min+i`**的元素个数
 > 2. **反向遍历**原数组`nums`（不是计数数组`count`）。保证相同大小的元素在排序前后相对位置不变。这个脑内想象一下排序过程就很好理解，但是不好言语描述
 {: .prompt-info }
+
+## 参考资料
+
+- [CSDN：图解计数排序](https://blog.csdn.net/weixin_44820625/article/details/106808623?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-106808623-blog-107865766.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-106808623-blog-107865766.pc_relevant_paycolumn_v3&utm_relevant_index=5)
