@@ -15,14 +15,15 @@ toc: true
 高解耦系统（所有类的设计遵循「单一责任原则」，即每一个类只负责最小的功能）通常拥有相互组合但解耦的数量众多的类。初始化某个系统可能涉及到较繁杂的实例化流程（因为类 A 可能需要类 B 的实例用于初始化，而类 B 又需要类 C 的实例初始化）。
 
 > 复杂的实例化流程不代表高解耦系统是不好的，这只是高解耦特性必然会带来的结果。
+{: .prompt-info }
 
 外观模式是什么？我们创造出一个虚拟的壳（外观），把系统的所有类全部包裹其中。使用系统的用户只需要与这个壳交互。
 
 用现实的例子来比喻，汽车的一键启动按钮和全自动洗衣机的智能启动按钮。
 
-驾驶者不需要了解汽车的内部构造，只需要学会点火、操纵方向盘和操纵杆以及控制油门和刹车，就能正常驾驶了。点火按钮、方向盘、操纵杆、油门和刹车都是汽车系统提供给驾驶者的「接口」。
+驾驶者不需要了解汽车的内部构造，只需要学会点火、操纵方向盘和操纵杆以及控制油门和刹车，就能正常驾驶了。点火按钮、方向盘、操纵杆、油门和刹车都是汽车系统提供给驾驶者的接口。
 
-全自动洗衣机只需要你 1）放入衣物；2）放入洗涤剂；3）按下启动按钮。它自动包揽设置水量、加水、洗涤、漂洗和脱水等洗衣程序。
+全自动洗衣机只需要你 1）放入衣物；2）放入洗涤剂；3）按下启动按钮。它自动包揽设置水量、加水、洗涤、漂洗和脱水等洗衣程序。智能启动按钮就是洗衣机提供给操作者的接口。
 
 ## 代码实现
 
@@ -72,8 +73,23 @@ class ComputerFacade { // 电脑外观，提供开关
 const computer = new Computer();
 const computerFacade = new ComputerFacade(computer);
 
-computerFacade.turnOn(); // Output: Ouch! Beep beep! Loading... Haaah! Computer is on!
-computerFacade.turnOff(); // Output: Zzzzz Closing everything... Haaah! Computer is off!
+computerFacade.turnOn();  
+computerFacade.turnOff(); 
+```
+
+输出：
+
+```shell
+Ouch!
+Beep beep!
+Loading...
+Haaah!
+Computer is on!
+
+Zzzzz
+Closing everything...
+Haaah!
+Computer is off!
 ```
 
 ## 得墨忒耳定律
@@ -87,6 +103,7 @@ A module should not know about the inner workings of the objects it manipulates.
 > 1.  每個單元對於其他的單元只能擁有有限的知識：只是與當前單元緊密聯繫的單元；
 > 2.  每個單元只能和它的朋友交談：不能和陌生單元交談；
 > 3.  只和自己直接的朋友交談。
+{: .prompt-info }
 
 代码中表现为，减少连续调用链的长度：
 
