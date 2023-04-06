@@ -28,45 +28,45 @@ toc: true
 
 ```js
 class Computer { // 电脑内部系统
-	getElectricShock() {
-		console.log('Ouch!');
-	}
-	makeSound() {
-		console.log('Beep beep!');
-	}
-	showLoadingScreen() {
-		console.log('Loading...');
-	}
-	closeEverything() {
-		console.log('Closing everything...');
-	}
-	sooth() {
-		console.log('Zzzzz');
-	}
-	pullCurrent() {
-		console.log('Haaah!');
-	}
+    getElectricShock() {
+        console.log('Ouch!');
+    }
+    makeSound() {
+        console.log('Beep beep!');
+    }
+    showLoadingScreen() {
+        console.log('Loading...');
+    }
+    closeEverything() {
+        console.log('Closing everything...');
+    }
+    sooth() {
+        console.log('Zzzzz');
+    }
+    pullCurrent() {
+        console.log('Haaah!');
+    }
 }
 
 class ComputerFacade { // 电脑外观，提供开关
-	constructor(computer) {
-		this.computer = computer;
-	}
+    constructor(computer) {
+        this.computer = computer;
+    }
 
-	turnOn() {
-		this.computer.getElectricShock();
-		this.computer.makeSound();
-		this.computer.showLoadingScreen();
-		this.computer.pullCurrent();
-		console.log('Computer is on!');
-	}
+    turnOn() {
+        this.computer.getElectricShock();
+        this.computer.makeSound();
+        this.computer.showLoadingScreen();
+        this.computer.pullCurrent();
+        console.log('Computer is on!');
+    }
 
-	turnOff() {
-		this.computer.sooth();
-		this.computer.closeEverything();
-		this.computer.pullCurrent();
-		console.log('Computer is off!');
-	}
+    turnOff() {
+        this.computer.sooth();
+        this.computer.closeEverything();
+        this.computer.pullCurrent();
+        console.log('Computer is off!');
+    }
 }
 
 const computer = new Computer();
