@@ -210,5 +210,5 @@ How？
 
 ## 参考资料
 
-- [Youtube: template method pattern]([Template Method Pattern – Design Patterns (ep 13) - YouTube](https://www.youtube.com/watch?v=7ocpwK9uesw&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=13)) 
+- [Youtube: template method pattern](https://www.youtube.com/watch?v=7ocpwK9uesw&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=13)
 - 《Head First 设计模式》第八章
